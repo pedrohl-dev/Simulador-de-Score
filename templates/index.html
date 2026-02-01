@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Crédito/Score</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Score</h1>
+        <form method="post">
+            <button type="submit" onclick="this.disabled=true; this.form.submit();">Calcular Score</button>
+            <div class="box-container">
+            <div class="box">
+                <h3>Insira sua idade.</h3>
+                <input type="number" id="idade" name="idade" placeholder="Idade" required>
+            </div>
+            <div class="box">
+                <h3>Insira sua renda mensal.</h3>
+                <input type="number" id="renda" name="renda" placeholder="Renda Mensal" required>
+            </div>
+            <div class="box">
+                <h3>Você possui alguma divida?</h3>
+                <select id="divida" name="divida" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option id="nao" value="nao">Não</option>
+                    <option id="sim" value="sim">Sim</option>
+                </select>
+            </div>
+        </div>
+        </form>
+        {% if score is not none %}
+        <div class="bottom-container">
+                <p class="score"><strong>Score:</strong> {{ score }}</p>
+                <p class="limite"><strong>Limite:</strong> R$ {{ limite }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <h4>ATENÇÃO: Este programa é apenas um projeto de demonstração, não representa uma análise de crédito real.</h4>
+
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            const idade = document.getElementById('idade').value;
+
+            if (idade > 100 || isNaN(idade)) {
+                alert("Insira uma idade válida.")
+            } else if (idade < 18) { 
+                alert("Você precisa ter 18 anos ou mais.")
+            }
+        });
+            
+    </script>
+</body>
+</html>
