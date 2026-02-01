@@ -4,10 +4,10 @@ O sistema recebe dados do usuário, realiza validações no front-end e no back-
 
 Tecnologias utilizadas
 
-Python
+- Python
 
-Flask
+- Flask
 
-HTML / CSS
+- HTML / CSS
 
-JavaScript
+- JavaScript
